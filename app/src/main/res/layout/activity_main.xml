@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/bg_color">
+
+    <androidx.appcompat.widget.AppCompatButton
+        style="@style/ActionButton"
+        android:id="@+id/sharedpref_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
+        android:text="@string/shared_preferences"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        style="@style/ActionButton"
+        android:id="@+id/database_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Database"
+        app:layout_constraintEnd_toEndOf="@+id/sharedpref_button"
+        app:layout_constraintStart_toStartOf="@+id/sharedpref_button"
+        app:layout_constraintTop_toBottomOf="@+id/sharedpref_button" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        style="@style/ActionButton"
+        android:id="@+id/istorage_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Internal Storage"
+        app:layout_constraintEnd_toEndOf="@+id/sharedpref_button"
+        app:layout_constraintStart_toStartOf="@+id/sharedpref_button"
+        app:layout_constraintTop_toBottomOf="@+id/database_button" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        style="@style/ActionButton"
+        android:id="@+id/estorage_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="External Storage"
+        app:layout_constraintEnd_toEndOf="@+id/istorage_button"
+        app:layout_constraintStart_toStartOf="@+id/istorage_button"
+        app:layout_constraintTop_toBottomOf="@+id/istorage_button" />
+</androidx.constraintlayout.widget.ConstraintLayout>

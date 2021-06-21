@@ -1,10 +1,9 @@
-package com.dynamicdevz.dynamicstorageapp;
+package com.dynamicdevz.dynamicstorageapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import com.dynamicdevz.dynamicstorageapp.databinding.ActivityMainBinding;
 
@@ -20,8 +19,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.sharedprefButton.setOnClickListener(whatever -> {
-           Intent intent = new Intent(this, SharedpreferencesActivity.class);
+           Intent intent = new Intent(this, SharedPreferencesActivity.class);
            startActivity(intent);
         });
+
+        binding.databaseButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, SQLiteDatabaseActivity.class);
+            startActivity(intent);
+        });
+
     }
 }

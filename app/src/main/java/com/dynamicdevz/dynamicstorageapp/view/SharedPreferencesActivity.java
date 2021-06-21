@@ -1,4 +1,4 @@
-package com.dynamicdevz.dynamicstorageapp;
+package com.dynamicdevz.dynamicstorageapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,7 @@ import com.dynamicdevz.dynamicstorageapp.databinding.ActivitySharedpreferencesBi
 
 import static com.dynamicdevz.dynamicstorageapp.util.Constants.DATA_KEY;
 
-public class SharedpreferencesActivity extends AppCompatActivity {
+public class SharedPreferencesActivity extends AppCompatActivity {
 
     private ActivitySharedpreferencesBinding binding;
 

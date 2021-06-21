@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DynamicStorageApp">
-        <activity android:name=".SharedpreferencesActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.SQLiteDatabaseActivity"></activity>
+        <activity android:name=".view.SharedPreferencesActivity" />
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

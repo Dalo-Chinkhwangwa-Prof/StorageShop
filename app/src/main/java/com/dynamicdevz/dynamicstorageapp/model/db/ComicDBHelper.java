@@ -9,12 +9,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import com.dynamicdevz.dynamicstorageapp.model.data.Comic;
-import com.dynamicdevz.dynamicstorageapp.util.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.dynamicdevz.dynamicstorageapp.util.Logger.*;
+import static com.dynamicdevz.dynamicstorageapp.util.Logger.logDebug;
 
 public class ComicDBHelper extends SQLiteOpenHelper {
 
@@ -28,7 +27,6 @@ public class ComicDBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ISSUE = "issue";
     public static final String COLUMN_PUBLISHER = "publisher";
     public static final String COLUMN_COMIC_ID = "comic_id";
-
 
     public ComicDBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -91,4 +89,21 @@ public class ComicDBHelper extends SQLiteOpenHelper {
         }
         return comics;
     }
+
+
+    public void deleteComic(Comic comic){
+        String deleteQuery = "DELETE * FROM "+TABLE_NAME+ " WHERE "+COLUMN_COMIC_ID + " = "+comic.getComicId();
+        getWritableDatabase().rawQuery(deleteQuery, new String[]{COLUMN_PUBLISHER, COLUMN_ISSUE, COLUMN_TITLE}, null);
+    }
+
 }
+
+
+
+
+
+
+
+
+
+

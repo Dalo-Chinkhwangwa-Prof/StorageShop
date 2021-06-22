@@ -13,6 +13,7 @@ import com.dynamicdevz.dynamicstorageapp.databinding.ActivitySqliteDatabaseBindi
 import com.dynamicdevz.dynamicstorageapp.model.data.Comic;
 import com.dynamicdevz.dynamicstorageapp.model.data.Comic.Publisher;
 import com.dynamicdevz.dynamicstorageapp.model.db.ComicDBHelper;
+import com.dynamicdevz.dynamicstorageapp.view.adapter.ComicAdapter;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class SQLiteDatabaseActivity extends AppCompatActivity {
 
     private ActivitySqliteDatabaseBinding binding;
     private Publisher setPublisher = Publisher.BOOM;
+    private ComicAdapter comicAdapter = new ComicAdapter();
 
     private ComicDBHelper dbHelper;
 
@@ -36,12 +38,15 @@ public class SQLiteDatabaseActivity extends AppCompatActivity {
         binding = ActivitySqliteDatabaseBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.comicListview.setAdapter(comicAdapter);
         dbHelper = new ComicDBHelper(this);
         readAllComics();
 
 
         binding.publisherSpinner.setAdapter( new ArrayAdapter<String>(this, R.layout.spinner_item,R.id.publisher_name, options ));
         binding.publisherSpinner.setSelection(0);
+
+
 
         binding.publisherSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -70,13 +75,6 @@ public class SQLiteDatabaseActivity extends AppCompatActivity {
     }
 
     private void readAllComics() {
-
-        List<Comic> comics = dbHelper.getAllComics();
-
-        StringBuilder s = new StringBuilder();
-        for(int i = 0; i < comics.size(); i++){
-            s.append(comics.get(i).getTitle()).append("\n");
-        }
-        binding.outputTextview.setText(s.toString());
+        comicAdapter.setComicList(dbHelper.getAllComics());
     }
 }

@@ -1,6 +1,45 @@
 package com.dynamicdevz.dynamicstorageapp.model.data;
 
-public class Comic {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class Comic implements Parcelable {
+
+    protected Comic(Parcel in) {
+        comicId = in.readInt();
+        publishYear = in.readInt();
+        rating = in.readDouble();
+        title = in.readString();
+        issue = in.readInt();
+    }
+
+    public static final Creator<Comic> CREATOR = new Creator<Comic>() {
+        @Override
+        public Comic createFromParcel(Parcel in) {
+            return new Comic(in);
+        }
+
+        @Override
+        public Comic[] newArray(int size) {
+            return new Comic[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(comicId);
+        parcel.writeInt(publishYear);
+        parcel.writeDouble(rating);
+        parcel.writeString(title);
+        parcel.writeInt(issue);
+    }
 
     public enum Publisher {
         MARVEL,

@@ -28,6 +28,9 @@ public class ComicDBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_PUBLISHER = "publisher";
     public static final String COLUMN_COMIC_ID = "comic_id";
 
+
+
+
     public ComicDBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

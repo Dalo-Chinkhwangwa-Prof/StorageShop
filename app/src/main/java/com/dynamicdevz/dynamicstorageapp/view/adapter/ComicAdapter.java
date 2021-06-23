@@ -13,20 +13,25 @@ import java.util.List;
 
 public class ComicAdapter extends BaseAdapter {
 
+    public interface ComicDelegate {
+        void selectComic(Comic comic);
+    }
     private List<Comic> comicList = new ArrayList<>();
 
-    public ComicAdapter(List<Comic> comicList) {
+    private ComicDelegate comicDelegate;
+
+    public ComicAdapter(ComicDelegate comicDelegate) {
+        this.comicDelegate = comicDelegate;
+    }
+
+    public ComicAdapter(List<Comic> comicList, ComicDelegate comicDelegate) {
         this.comicList = comicList;
+        this.comicDelegate = comicDelegate;
     }
 
     public void setComicList(List<Comic> comicList) {
         this.comicList = comicList;
-        notifyDataSetChanged();
     }
-
-    public ComicAdapter() { }
-
-
 
     @Override
     public int getCount() {
@@ -58,6 +63,21 @@ public class ComicAdapter extends BaseAdapter {
         binding.issueTextview.setText("Issue #"+comic.getIssue());
         binding.releaseTextview.setText("Release: "+comic.getPublishYear());
 
+        binding.getRoot().setOnClickListener(v -> {
+            comicDelegate.selectComic(comic);
+        });
         return binding.getRoot();
     }
+
 }
+
+
+
+
+
+
+
+
+
+
+
